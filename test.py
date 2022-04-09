@@ -1,4 +1,6 @@
-listt = [1, 2, 3, 4, 4, 5, 5, 4, 2]
+import statistics
+from collections import Counter
 
-for i in sorted(listt):
-    print(i)
+listt = [1, 5, 5, 2, 2, 4, 1, 3, 4, 15, 3]
+
+print(Counter(listt).most_common())
