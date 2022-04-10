@@ -1,6 +1,3 @@
-import statistics
-from collections import Counter
+listt = [[1, 3], [1, 2], [2, 1], [2, 2]]
 
-listt = [1, 5, 5, 2, 2, 4, 1, 3, 4, 15, 3]
-
-print(Counter(listt).most_common())
+print(sorted(listt))
