@@ -15,6 +15,7 @@ def backtracking():
     if len(num_arr) == M:
         for i in num_arr:
             print(i, end=' ')
+            return
             
     for i in range(1, N+1):
         if i not in num_arr:
@@ -37,6 +38,7 @@ num_arr = []
 def backtracking():
     if len(num_arr) == M:
         print(' '.join(map(str, num_arr)))
+        return
             
     for i in range(1, N+1):
         if i not in num_arr:

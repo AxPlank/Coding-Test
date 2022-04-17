@@ -1,5 +1,5 @@
 """
-백준 15649번: N과 M(2)
+백준 15650번: N과 M(2)
 """
 
 """
@@ -17,6 +17,7 @@ def backtracking():
             print(i, end=' ')
             if num_arr.index(i) == M - 1:
                 print()
+                return
             
     for i in range(1, N+1):
         if len(num_arr) == 0:
@@ -45,6 +46,7 @@ num_arr = []
 def backtracking():
     if len(num_arr) == M:
         print(' '.join(map(str, num_arr)))
+        return
             
     for i in range(1, N+1):
         if len(num_arr) == 0:
