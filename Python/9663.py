@@ -4,29 +4,23 @@
 
 import sys
 
-def chess(chess_table, queen_count):
+def chess_queen(row):
     global cnt
-    if queen_count == 0:
+    if row == N:
         cnt += 1
         return
     
-    temp_table = chess_table
     for i in range(N):
-        for j in range(N):
-            if chess_table[i][j]:
-                queen_count -= 1
-                chess_table[i][j] = False
-                
-                chess_table[i] = [False] * N
-                for k in range(N):
-                    chess_table[k][j] = False
-                    
-                    
-
-N = int(sys.stdin.readline())
-chess_table = [[True for _ in range(N)] for _ in range(N)]
-queen_count = N
+        chess_table[row] = i
+        
+        for j in range(row):
+            if abs(row - j) == abs(i - chess_table[j]) or i == chess_table[j]:
+                continue
+            chess_queen(row+1)
+            
 cnt = 0
+N = int(sys.stdin.readline())
+chess_table = [0] * N
 
-chess(chess_table, queen_count)
+chess_queen(0)
 print(cnt)
