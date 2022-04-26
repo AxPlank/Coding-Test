@@ -3,76 +3,71 @@
 """
 
 import sys
+import time
 
-def box33_check(xmin, xmax, ymin, ymax, xidx, yidx):
-    for i in range(xmin, xmax):
-        for j in range(ymin, ymax):
-            if sdocu_table[xidx][yidx] == sdocu_table[i][j]:
-                return False
-    return True
-
-def y_check(xidx, yidx):
-    for i in range(9):
-        if sdocu_table[xidx][i] == sdocu_table[xidx][yidx]:
-            return False
-    return True
-
-def x_check(xidx):
-    if i in sdocu_table[xidx]:
+"""
+자리에 특정 값이 들어갈 수 있는지를 점검하는 함수
+"""
+def check_x(x, num):
+    if num in table[x]:
         return False
     return True
 
-def sdocu():
+def check_y(y, num):
     for i in range(9):
-        for j in range(9):
-            if sdocu_table[i][j] == 0:
-                for k in range(1, 10):
-                    sdocu_table[i][j] = k
-                    """
-                    k가 들어갈 수 있는지 점검
-                    """
-                    if i >= 0 and i <= 2 and j >= 0 and j <= 2:
-                        if box33_check(0, 3, 0, 3, i, j) and y_check(i, j) and x_check(i):
-                            break
-                        continue
-                    if i >= 3 and i <= 5 and j >= 0 and j <= 2:
-                        if box33_check(3, 6, 0, 3, i, j) and y_check(i, j) and x_check(i):
-                            break
-                        continue
-                    if i >= 6 and i <= 8 and j >= 0 and j <= 2:
-                        if box33_check(6, 9, 0, 3, i, j) and y_check(i, j) and x_check(i):
-                            break
-                        continue
-                    if i >= 0 and i <= 2 and j >= 3 and j <= 5:
-                        if box33_check(0, 3, 3, 6, i, j) and y_check(i, j) and x_check(i):
-                            break
-                        continue
-                    if i >= 3 and i <= 5 and j >= 3 and j <= 5:
-                        if box33_check(3, 6, 3, 6, i, j) and y_check(i, j) and x_check(i):
-                            break
-                        continue
-                    if i >= 6 and i <= 8 and j >= 3 and j <= 5:
-                        if box33_check(6, 9, 3, 6, i, j) and y_check(i, j) and x_check(i):
-                            break
-                        continue
-                    if i >= 0 and i <= 2 and j >= 6 and j <= 8:
-                        if box33_check(0, 3, 6, 9, i, j) and y_check(i, j) and x_check(i):
-                            break
-                        continue
-                    if i >= 3 and i <= 5 and j >= 6 and j <= 8:
-                        if box33_check(3, 6, 6, 9, i, j) and y_check(i, j) and x_check(i):
-                            break
-                        continue
-                    if i >= 6 and i <= 8 and j >= 6 and j <= 9:
-                        if box33_check(6, 9, 6, 9, i, j) and y_check(i, j) and x_check(i):
-                            break
-                        continue
+        if table[i][y] == num:
+            return False
+    return True
 
-sdocu_table = []
-for i in range(9):
-    sdocu_table.append(list(map(int, sys.stdin.readline().strip().split())))
+def check_33box(x, y, num):
+    if x == 1 and y == 0:
+        print(num)
+    for i in range((x//3)*3, (x//3+1)*3):
+        for j in range((y//3)*3, (y//3+1)*3):
+            if x == 1 and y == 0:
+                print(i, j)
+                print(table[i][j])
+            if table[i][j] == num:
+                return False
+    return True
+
+"""
+스도쿠
+"""
+def sdocu(n):
+    """
+    point_0의 길이는 빈 칸의 수를 의미하므로, n의 값이 point_0라면 모든 자리가 다 채워졌음을 의미
+    """
+    if len(point_0) == n:
+        for i in range(9):
+            print(' '.join(map(str, table[i])))
+        print(time.time()-start)
+        sys.exit()
     
-sdocu()
+    # for i in range(len(point_0)):
+    #     if table[point_0[i][0]][point_0[i][1]] == 0:
+    #         for j in range(1, 10):
+    #             if check_x(point_0[i][0], j) and check_y(point_0[i][1], j) and check_33box(point_0[i][0], point_0[i][1], j):
+    #                 table[point_0[i][0]][point_0[i][1]] = j
+    #                 sdocu(n+1)
+    #                 table[point_0[i][0]][point_0[i][1]] = 0
     
+    for i in range(1, 10):
+        if check_x(point_0[n][0], i) and check_y(point_0[n][1], i) and check_33box(point_0[n][0], point_0[n][1], i):
+            table[point_0[n][0]][point_0[n][1]] = i
+            sdocu(n+1)
+            table[point_0[n][0]][point_0[n][1]] = 0
+
+table = []
+for _ in range(9):
+    table.append(list(map(int, sys.stdin.readline().strip().split())))
+    
+point_0 = []
 for i in range(9):
-    print(' '.join(map(str, sdocu_table[i])))
+    for j in range(9):
+        if table[i][j] == 0:
+            point_0.append((i, j))
+            
+print(point_0)
+start = time.time()
+sdocu(0)
