@@ -3,7 +3,6 @@
 """
 
 import sys
-import time
 
 """
 자리에 특정 값이 들어갈 수 있는지를 점검하는 함수
@@ -20,13 +19,8 @@ def check_y(y, num):
     return True
 
 def check_33box(x, y, num):
-    if x == 1 and y == 0:
-        print(num)
     for i in range((x//3)*3, (x//3+1)*3):
         for j in range((y//3)*3, (y//3+1)*3):
-            if x == 1 and y == 0:
-                print(i, j)
-                print(table[i][j])
             if table[i][j] == num:
                 return False
     return True
@@ -41,16 +35,7 @@ def sdocu(n):
     if len(point_0) == n:
         for i in range(9):
             print(' '.join(map(str, table[i])))
-        print(time.time()-start)
         sys.exit()
-    
-    # for i in range(len(point_0)):
-    #     if table[point_0[i][0]][point_0[i][1]] == 0:
-    #         for j in range(1, 10):
-    #             if check_x(point_0[i][0], j) and check_y(point_0[i][1], j) and check_33box(point_0[i][0], point_0[i][1], j):
-    #                 table[point_0[i][0]][point_0[i][1]] = j
-    #                 sdocu(n+1)
-    #                 table[point_0[i][0]][point_0[i][1]] = 0
     
     for i in range(1, 10):
         if check_x(point_0[n][0], i) and check_y(point_0[n][1], i) and check_33box(point_0[n][0], point_0[n][1], i):
@@ -68,6 +53,4 @@ for i in range(9):
         if table[i][j] == 0:
             point_0.append((i, j))
             
-print(point_0)
-start = time.time()
 sdocu(0)
