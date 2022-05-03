@@ -1,2 +1,3 @@
-listt = [[1, 2, 3, 4], [1, 2, 3, 4]]
-print(sum(listt))
+from itertools import combinations
+
+print(len(list(combinations([i for i in range(20)], 10))))
