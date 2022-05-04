@@ -1,3 +1,2 @@
-from itertools import combinations
-
-print(len(list(combinations([i for i in range(20)], 10))))
+a = [1, 22, 13, 4]
+print(sorted(a, reverse=True))
