@@ -4,8 +4,11 @@
 
 import sys
 
+"""
+소인수분해 함수
+"""
 def factorizationn(n):
-    factor_list = [0] * (max(n1, n2) + 1)
+    factor_list = [0] * (max(n1, n2) + 1) # 소인수분해를 시도할 때, 각 소수의 지수를 담을 리스트
     i = 2
     while n > 2 and i <= n:
         if n % i == 0:
