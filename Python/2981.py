@@ -3,23 +3,17 @@
 """
 
 import sys
+from math import gcd
 
 N = int(sys.stdin.readline())
 numbers = [int(sys.stdin.readline()) for _ in range(N)]
-numbers_len = len(numbers)
-numbers_min = min(numbers)
-remainders = []
+num_intervals = [abs(numbers[i]-numbers[i+1]) for i in range(N-1)]
+GCD = 0
 
-for i in range(2, numbers_min+1):
-    cnt = 0
-    remainderr = numbers[0] % i
-    for j in numbers:
-        if j % i != remainderr:
-            break
-        cnt += 1
+for i in range(N-2):
+    GCD = gcd(num_intervals[i], num_intervals[i+1])
+    
+M_list = []
+for i in range(2, int(GCD/2)+1):
+    if GCD % i == 0:
         
-    if cnt == numbers_len:
-        remainders.append(str(i))
-
-if len(remainders) > 0:
-    print(' '.join(remainders))

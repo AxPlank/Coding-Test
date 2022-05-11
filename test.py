@@ -1,3 +1,4 @@
-a = 3 % 3
-b = 6 % 3
-print(a == b)
+from math import gcd
+
+a = [108, 90, 78]
+print(*a)
