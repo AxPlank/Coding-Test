@@ -1,7 +1,43 @@
 """
 백준 2609번: 최대공약수와 최소공배수
 """
+"""
+풀이 1: 유클리드 호제법 이용
+"""
+import sys
 
+"""
+최대공약수를 구하는 함수
+"""
+def getGCD(a, b):
+    while b > 0:
+        a, b = b, a % b
+    return a
+    
+A, B = map(int, sys.stdin.readline().strip().split())
+
+GCD = getGCD(max(A, B), min(A, B)) # 최대공약수
+LCM = (A * B) // GCD # 최소공배수
+print(GCD)
+print(LCM)
+
+"""
+풀이 2: math 라이브러리 이용
+"""
+from math import gcd, lcm
+import sys
+
+A, B = map(int, sys.stdin.readline().strip().split())
+
+GCD = gcd(A, B)
+LCM = lcm(A, B)
+
+print(GCD)
+print(LCM)
+
+"""
+풀이 3: 소인수분해 이용
+"""
 import sys
 
 """
