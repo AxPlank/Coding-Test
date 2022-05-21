@@ -1,4 +1,3 @@
-a = set()
-a.add(1)
-a.add(1)
-print(a)
+listt = [1, 3, 2, 4, 21]
+listt.sort()
+print(listt)
