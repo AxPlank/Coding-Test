@@ -18,4 +18,3 @@ from math import factorial
 
 N, K = map(int, sys.stdin.readline().strip().split())
 print(factorial(N)//factorial(N-K)//factorial(K))
-
