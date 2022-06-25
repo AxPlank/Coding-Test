@@ -6,6 +6,7 @@ for i in range(case):
 
     if abs(r1 - r2) == 0 and distance == 0:
         print(-1)
+        
     elif distance == abs(r1 - r2) or distance == r1 + r2:
         print(1)
     elif distance > abs(r1 - r2) and distance < r1 + r2:
