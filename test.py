@@ -1,4 +1,3 @@
-import time
-from math import factorial, perm
+x ='abcde'
 
-print(perm(5, 2))
+print(int(x))
