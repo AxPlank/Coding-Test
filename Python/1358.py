@@ -7,6 +7,7 @@ from math import sqrt
 cnt = 0
 W, H, X, Y, P = map(int, sys.stdin.readline().strip().split())
 
+# 좌표가 원 안에 있는지 확인하는 함수
 def distancee(center, x, y, r):
     distance_x = abs(center[0] - x)
     distance_y = abs(center[1] - y)
