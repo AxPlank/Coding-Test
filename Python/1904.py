@@ -2,7 +2,6 @@
 백준 1904번: 01타일
 """
 import sys
-sys.setrecursionlimit(2**31-1)
 
 N = int(sys.stdin.readline())
 N_fibo = [0 for i in range(N)]
