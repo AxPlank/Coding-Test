@@ -1,4 +1,4 @@
-# Coding-Test
-## master branch에 가시면 있습니다^^
-### blog: https://papus.tistory.com
-### github: https://github.com/AxPlank
+## Coding-Test
+---
+
+코딩 테스트 문제를 풀고, 이를 정리한 저장소입니다.
