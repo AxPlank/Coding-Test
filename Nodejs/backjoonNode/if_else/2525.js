@@ -34,3 +34,13 @@ if (hour2 >= 24) { // Sol 1에서의 두 번째 if문
 minute2 %= 60;
 
 console.log(hour2 + ' ' + minute2);
+
+// Sol 3. 삼항연산자 이용
+let [h, m] = inputt[0].split(' ').map(e => parseInt(e));
+let c = parseInt(inputt[1]);
+
+c += m;
+h = h + Math.floor(c / 60) >= 24 ? h + Math.floor(c / 60) - 24 : h + Math.floor(c / 60);
+m = c % 60;
+
+console.log(h, m);

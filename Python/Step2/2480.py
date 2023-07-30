@@ -25,6 +25,16 @@ elif D2 == D3:
     print(1000 + D3 * 100)
 else:
     print(max(D1, D2, D3) * 100)
+
+# Sol 3
+arr = sorted(list(map(int, input().split())))
+
+if arr[0] == arr[2]:
+    print(arr[0] * 1000 + 10000)
+elif arr[0] == arr[1] or arr[1] == arr[2]:
+    print(arr[1] * 100 + 1000)
+else:
+    print(arr[0] * 100)
     
 """
 과정 및 함수 설명

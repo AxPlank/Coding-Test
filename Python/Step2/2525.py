@@ -1,6 +1,7 @@
 H, M = map(int,input().split())
 T = int(input())
 
+# Sol 1
 H += T // 60
 M += T % 60
 
@@ -11,6 +12,13 @@ if M > 59:
 if H > 23:
     H -= 24
     
+print(H, M)
+
+# Sol 2
+T += M
+H = H + T // 60 - 24 if H + T // 60 > 23 else H + T // 60
+M = T % 60
+
 print(H, M)
 
 """
