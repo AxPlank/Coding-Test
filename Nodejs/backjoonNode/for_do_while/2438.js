@@ -27,3 +27,11 @@ for (var i = 1; i <= input; i++) {
 }
 
 console.log(output);
+
+// Sol 3
+const fs = require('fs');
+var input = Number(fs.readFileSync("../inputt.txt").toString());
+
+for (var i = 1; i <= input; i++) {
+    console.log(String().padStart(i, '*'));
+}
