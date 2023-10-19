@@ -2,12 +2,12 @@ import sys
 
 subject_number = int(sys.stdin.readline().strip())
 subject_score = list(map(int, sys.stdin.readline().strip().split()))
+max_score = max(subject_score)
 new_score = []
 
 for i in subject_score:
-    new_score.append(i / max(subject_score) * 100)
+    new_score.append(i / max_score * 100)
     
-print(new_score)    
 print(sum(new_score) / subject_number)
 
 """
